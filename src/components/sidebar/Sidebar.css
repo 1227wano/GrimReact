@@ -1,0 +1,94 @@
+.sidebar {
+  width: 200px;
+  background-image: linear-gradient(to right, #744197 85%, #eabc3e 15%);
+
+  padding: 20px;
+  box-shadow: 10px 10px 5px rgba(163, 161, 161, 0.7);
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-y: auto;
+  z-index: 999;
+  color: rgb(236, 178, 20);
+  text-decoration: none;
+  clip-path: polygon(100% 0, 100% 85%, 45% 100%, 0 100%, 0 0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+  padding: 10px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 10px;
+  width: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sidebar ul li:hover::before {
+  animation-delay: 0s;
+}
+
+.sidebar ul li:hover::after {
+  animation-delay: 0.1s;
+}
+
+.logoTitle {
+  margin-bottom: -25px;
+}
+
+.profile-picture {
+  width: 100px;
+  height: 100px;
+  background-color: #3b1a52;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  background-image: url("");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.sidebar ul li:hover {
+  background-color: rgb(236, 178, 20);
+  color: #570d88;
+}
+
+.sidebar ul li::before,
+.sidebar ul li::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: rgb(236, 178, 20);
+  border-radius: 50%;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  z-index: -1;
+}
+
+.sidebar ul li:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(3);
+}
+
+.sidebar ul li:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(5);
+}
