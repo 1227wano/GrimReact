@@ -46,9 +46,15 @@ const Signup = () => {
         setNameError("");
         setAddressError("");
         setEmailError("");
+        setIdError(response.data.userId);
+        setPwdError(response.data.userPwd);
+        setNameError(response.data.userName);
+        setAddressError(response.data.userAddress);
+        setEmailError(response.data.userEmail);
         window.location = "/";
       })
       .catch((error) => {
+        console.log(error);
         setIdError(error.response.data.userId);
         setPwdError(error.response.data.userPwd);
         setNameError(error.response.data.userName);
@@ -61,7 +67,7 @@ const Signup = () => {
     <SignupContainer>
       <SignupBox>
         <SignupTitle>내가기린그린그림</SignupTitle>
-        <SignupService>회원가입 서비스</SignupService>
+        <SignupService>회원가입</SignupService>
         <Form onSubmit={handleSubmit}>
           <SignupTextBox>
             <SignupIcon>👨‍🎨</SignupIcon>

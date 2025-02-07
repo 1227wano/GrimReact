@@ -12,7 +12,9 @@ export const SignupBox = styled.div`
   border: 5px solid rgba(0, 0, 0, 0);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
   width: 650px;
-  height: 800px;
+
+  min-height: 650px;
+  max-height: 1200px;
   background-color: rgb(116, 64, 150);
 `;
 
@@ -24,7 +26,7 @@ export const SignupTitle = styled.div`
 `;
 
 export const SignupService = styled.div`
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 700;
   margin: 10px 0;
   color: rgb(236, 178, 20);
@@ -100,7 +102,7 @@ export const SignupButton = styled.button`
   height: 45px;
   border-radius: 10px;
   border: none;
-  margin: 10px 0px;
+  margin: 30px 0px;
   font-size: 22px;
   font-weight: 700;
   background-color: rgb(81, 33, 116);
@@ -118,7 +120,8 @@ export const SignupButton = styled.button`
   }
 `;
 export const ErrorText = styled.div`
-  margin: 6px 150px;
+  margin: 15px 150px;
   color: rgb(255, 63, 63, 1);
   text-align: left;
+  font-weight: 600;
 `;
