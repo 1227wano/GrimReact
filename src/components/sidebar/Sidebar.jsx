@@ -20,6 +20,15 @@ function Sidebar() {
     }
   };
 
+  const handleLogout = () => {
+    const isConfirmed = window.confirm("로그아웃하시겠습니까?");
+
+    if (isConfirmed) {
+      logout();
+      goTo("/login");
+    }
+  };
+
   return (
     <div className="sidebar">
       <h2 className="logoTitle">내가기린</h2>
@@ -35,7 +44,7 @@ function Sidebar() {
         <div className={`accordion-content ${isAccordionOpen ? "open" : ""}`}>
           <div className="accordion-inner">
             <ul>
-              <li onClick={logout}>로그아웃</li>
+              <li onClick={handleLogout}>로그아웃</li>
               <li onClick={() => goTo("/mypage")}>마이페이지</li>
               <li onClick={() => goTo("/settings")}>설정</li>
             </ul>
