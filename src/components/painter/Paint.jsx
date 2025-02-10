@@ -240,7 +240,7 @@ export default function Paint() {
     "#FFFFFF",
     "#db694c",
     "#562124",
-    "lightgreen",
+    "#156351",
   ];
 
   return (
