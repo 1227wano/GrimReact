@@ -1,3 +1,4 @@
+/* Palette.css */
 .palette {
   display: flex;
   justify-content: center;
@@ -13,33 +14,20 @@
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: transform 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 .color-button:hover {
   transform: scale(1.2);
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 호버 시 그림자 강화 */
 }
 
 .color-button.selected {
-  border: 3px solid #000000;
-  animation: borderColorChangePurple 3s infinite alternate;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 0 5px rgba(0, 0, 0, 0.2); /* 3D 효과 및 내부 그림자 */
+  transform: scale(1.2); /* 클릭 시 확대 효과 유지 */
 }
 
-@keyframes borderColorChangePurple {
-  0% {
-    border-color: #744197;
-  }
-  25% {
-    border-color: #8556a5;
-  }
-  50% {
-    border-color: #946bb3;
-  }
-  75% {
-    border-color: #a480c1;
-  }
-  100% {
-    border-color: #b594cf;
-  }
+.color-button.selected:hover {
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.3), 0 5px rgba(0, 0, 0, 0.2); /* 선택된 버튼 호버 시 쉐도우 색상 */
+  transform: scale(1.2); /* 선택된 버튼 호버 시 위치 유지 */
 }

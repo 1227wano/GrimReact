@@ -3,7 +3,7 @@ import { CanvasStyle } from "./Paint.styles";
 import "./Paint.css";
 import Toolbar from "../toolbar/Toolbar";
 import Palette from "../palette/Palette";
-
+import Modal from "../paintModal/Modal";
 export default function Paint() {
   const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
@@ -14,7 +14,8 @@ export default function Paint() {
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(0);
   const [rainbowPen, setRainbowPen] = useState(false);
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [imageSrc, setImageSrc] = useState("");
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.width = 1150;
@@ -184,7 +185,7 @@ export default function Paint() {
     const canvas = canvasRef.current;
     const dataURL = canvas.toDataURL("image/png");
 
-    let fileName = prompt("저장할 파일 이름을 입력하세요:", "drawing");
+    let fileName = prompt("저장할 파일 이름을 입력하세요:", "");
     if (!fileName) {
       console.error("파일 이름이 입력되지 않았습니다.");
       return;
@@ -198,6 +199,8 @@ export default function Paint() {
     link.click();
 
     alert(`파일이 "${fileName}" 이름으로 저장되었습니다.`);
+    setImageSrc(dataURL);
+    setIsModalOpen(true);
   };
 
   const undo = () => {
@@ -228,7 +231,10 @@ export default function Paint() {
     { name: "채우기", icon: "🧺" },
     { name: "무지개 펜", icon: "🌈" },
   ];
-
+  const handleModalSubmit = (data) => {
+    console.log("제목:", data.title);
+    console.log("내용:", data.content);
+  };
   const colors = [
     "#000000",
     "#FF0000",
@@ -258,7 +264,7 @@ export default function Paint() {
               Redo
             </button>
             <button onClick={saveDrawing} className="save-button">
-              저장하기
+              게시물 올리기
             </button>
           </div>
           <canvas
@@ -283,12 +289,17 @@ export default function Paint() {
             selectedColor={selectedColor}
           />
         </div>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+          onSubmit={handleModalSubmit}
+          imageSrc={imageSrc}
+        />
       </div>
     </CanvasStyle>
   );
 }
 
-// Flood fill and utility functions
 const floodFill = (canvas, x, y, fillColor) => {
   const context = canvas.getContext("2d");
   const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
