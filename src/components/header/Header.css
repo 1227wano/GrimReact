@@ -4,10 +4,10 @@
   color: rgb(236, 222, 20);
   text-align: center;
   padding: 20px 0;
-  position: fixed; /* 헤더를 고정 */
-  top: 0; /* 화면의 맨 위에 고정 */
-  left: 0; /* 화면의 왼쪽에 고정 */
-  z-index: 998; /* 다른 요소들 위에 고정 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 998;
 }
 
 .header h1 {
