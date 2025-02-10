@@ -9,21 +9,31 @@
   padding: 5px;
   font-size: 24px;
   cursor: pointer;
-  background-color: transparent;
-  border: 2px solid #ccc;
+  background-color: #744197;
+  border: none;
   border-radius: 8px;
-  transition: background-color 0.3s, transform 0.3s;
+  color: white;
+  box-shadow: 0 5px #5e356f;
+  transition: background-color 0.5s ease, box-shadow 0.3s ease;
 }
 .toolbar button.selected {
-  background-color: #87ceeb;
+  background-color: #eabc3e;
+  color: white;
+  box-shadow: 0 5px #b6892d;
+}
+
+.toolbar button.selected:hover {
+  background-color: #d4a636;
+  box-shadow: 0 5px #a07829;
 }
 
 .toolbar button:hover {
-  background-color: #e0e0e0;
-  transform: scale(1.1);
+  background-color: #5e356f;
+  box-shadow: 0 5px #4c2a4b;
 }
 
 .toolbar button:active {
-  background-color: #d0d0d0;
-  transform: scale(0.95);
+  background-color: #eabc3e;
+  box-shadow: 0 3px #b6892d;
+  transform: translateY(2px);
 }

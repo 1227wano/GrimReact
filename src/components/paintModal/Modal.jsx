@@ -18,7 +18,7 @@ const Modal = ({ isOpen, onClose, onSubmit, imageSrc }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
-        <h2>게시물 올리기</h2>
+        <h2>게시물 올리깅</h2>
         <form>
           <label htmlFor="title">제목:</label>
           <br />
