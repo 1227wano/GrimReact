@@ -9,9 +9,11 @@ export default function Paint() {
   const [getCtx, setGetCtx] = useState(null);
   const [painting, setPainting] = useState(false);
   const [selectedTool, setSelectedTool] = useState("펜");
+  const [selectedColor, setSelectedColor] = useState("#000000");
   const [penColor, setPenColor] = useState("#000000");
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(0);
+  const [rainbowPen, setRainbowPen] = useState(false);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -29,12 +31,23 @@ export default function Paint() {
   useEffect(() => {
     if (getCtx) {
       if (selectedTool === "펜" || selectedTool === "넓은 붓") {
-        getCtx.strokeStyle = penColor;
+        getCtx.strokeStyle = rainbowPen ? getRandomColor() : penColor;
       } else if (selectedTool === "지우개") {
         getCtx.strokeStyle = "#FFFFFF";
       }
     }
-  }, [penColor, selectedTool, getCtx]);
+  }, [penColor, selectedTool, getCtx, rainbowPen]);
+
+  useEffect(() => {
+    if (rainbowPen) {
+      const interval = setInterval(() => {
+        if (getCtx) {
+          getCtx.strokeStyle = getRandomColor();
+        }
+      }, 100);
+      return () => clearInterval(interval);
+    }
+  }, [rainbowPen]);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -73,6 +86,7 @@ export default function Paint() {
 
   const handleColorSelect = (color) => {
     setPenColor(color);
+    setSelectedColor(color);
     if (getCtx) {
       getCtx.strokeStyle = color;
     }
@@ -89,19 +103,21 @@ export default function Paint() {
 
   const handleToolSelect = (tool) => {
     setSelectedTool(tool.name);
+    setRainbowPen(tool.name === "무지개 펜");
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
     canvas.onclick = null;
     canvas.onmousemove = null;
 
-    if (tool.name === "펜") {
+    if (tool.name === "펜" || tool.name === "무지개 펜") {
       if (ctx) {
         ctx.lineWidth = 2.5;
         canvas.onmousemove = (e) => {
           if (painting) {
             const mouseX = e.nativeEvent.offsetX;
             const mouseY = e.nativeEvent.offsetY;
+            getCtx.strokeStyle = getRandomColor();
             getCtx.lineTo(mouseX, mouseY);
             getCtx.stroke();
           }
@@ -141,7 +157,14 @@ export default function Paint() {
       }
     }
   };
-
+  const resetCanvas = () => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#FFFFFF";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    saveHistory(canvas);
+  };
   const drawFn = (e) => {
     if (selectedTool !== "채우기" && e.nativeEvent) {
       const mouseX = e.nativeEvent.offsetX;
@@ -160,10 +183,21 @@ export default function Paint() {
   const saveDrawing = () => {
     const canvas = canvasRef.current;
     const dataURL = canvas.toDataURL("image/png");
+
+    let fileName = prompt("저장할 파일 이름을 입력하세요:", "drawing");
+    if (!fileName) {
+      console.error("파일 이름이 입력되지 않았습니다.");
+      return;
+    }
+
+    fileName = `${fileName}.png`;
+
     const link = document.createElement("a");
     link.href = dataURL;
-    link.download = "drawing.png";
+    link.download = fileName;
     link.click();
+
+    alert(`파일이 "${fileName}" 이름으로 저장되었습니다.`);
   };
 
   const undo = () => {
@@ -178,11 +212,21 @@ export default function Paint() {
     }
   };
 
+  const getRandomColor = () => {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  };
+
   const tools = [
     { name: "펜", icon: "✏️" },
     { name: "넓은 붓", icon: "🖌️" },
     { name: "지우개", icon: "🧽" },
     { name: "채우기", icon: "🧺" },
+    { name: "무지개 펜", icon: "🌈" },
   ];
 
   const colors = [
@@ -194,12 +238,19 @@ export default function Paint() {
     "#FFA500",
     "#800080",
     "#FFFFFF",
+    "#db694c",
+    "#562124",
+    "#156351",
   ];
+
   return (
     <CanvasStyle>
       <div className="view">
         <div className="canvasWrap">
           <div className="buttonContainer">
+            <button onClick={resetCanvas} className="reset-button">
+              Reset
+            </button>
             <button onClick={undo} className="undo-button">
               Undo
             </button>
@@ -226,7 +277,11 @@ export default function Paint() {
             onToolSelect={handleToolSelect}
             selectedTool={selectedTool}
           />
-          <Palette colors={colors} onColorSelect={handleColorSelect} />
+          <Palette
+            colors={colors}
+            onColorSelect={handleColorSelect}
+            selectedColor={selectedColor}
+          />
         </div>
       </div>
     </CanvasStyle>
