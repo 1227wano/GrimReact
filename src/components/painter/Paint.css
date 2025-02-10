@@ -33,14 +33,16 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  background-color: #4caf50;
+  background-color: #eabc3e;
   color: white;
   transition: background-color 0.3s;
   margin-right: 25px;
 }
 
 .save-button:hover {
-  background-color: #45a049;
+  background-color: #c79f31;
+  box-shadow: 0 5px #b6892d;
+  transform: translateY(2px);
 }
 
 .buttonContainer {
@@ -49,6 +51,7 @@
   gap: 10px;
   margin-bottom: 10px;
 }
+.save-button,
 .reset-button,
 .undo-button,
 .redo-button {
@@ -59,30 +62,38 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 5px rgba(0, 0, 0, 0.2);
 }
 
 .undo-button {
-  background-color: #f44336;
+  background-color: #744197;
 
   color: white;
 }
 
 .undo-button:hover {
-  background-color: #d32f2f;
+  background-color: #5e356f;
+  box-shadow: 0 5px #4b274d;
+  transform: translateY(2px);
 }
 
 .redo-button {
-  background-color: #2196f3;
+  background-color: #744197;
   color: white;
 }
 
 .redo-button:hover {
-  background-color: #1976d2;
+  background-color: #5e356f;
+  box-shadow: 0 5px #4b274d;
+  transform: translateY(2px);
 }
 .reset-button {
   background-color: #ffcccc;
+  color: white;
 }
 .reset-button:hover {
-  background-color: #f44336;
+  background-color: #e06c6c;
+  box-shadow: 0 5px #cc5c5c;
+  transform: translateY(2px);
 }
