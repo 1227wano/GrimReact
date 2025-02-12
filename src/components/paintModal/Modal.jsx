@@ -1,15 +1,64 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import axios from "axios";
 import "./Modal.css";
+import { AuthContext } from "../Context/AuthContext";
 
-const Modal = ({ isOpen, onClose, onSubmit, imageSrc }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const Modal = ({ isOpen, onClose, imageSrc }) => {
+  const [picTitle, setPicTitle] = useState("");
+  const [picContent, setPicContent] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
+  const { auth } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (imageSrc) {
+      const file = dataURLtoFile(imageSrc, "drawing.png");
+      setSelectedFile(file);
+    }
+  }, [imageSrc]);
+
+  const dataURLtoFile = (dataurl, fileName) => {
+    var arr = dataurl.split(","),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]),
+      n = bstr.length,
+      u8arr = new Uint8Array(n);
+
+    while (n--) {
+      u8arr[n] = bstr.charCodeAt(n);
+    }
+
+    return new File([u8arr], fileName, { type: mime });
+  };
 
   if (!isOpen) return null;
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
   const handleSubmit = () => {
-    onSubmit({ title, content });
-    onClose();
+    const formData = new FormData();
+    formData.append("picTitle", picTitle);
+    formData.append("picContent", picContent);
+    formData.append("file", selectedFile);
+
+    axios
+      .post("http://localhost/paint", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+          Authorization: `Bearer ${auth.accessToken}`,
+        },
+      })
+      .then((response) => {
+        console.log("게시글 등록 성공:", response.data);
+        setPicContent("");
+        setPicTitle("");
+        setSelectedFile(null);
+        onClose();
+      })
+      .catch((error) => {
+        console.error("게시글 등록 실패:", error);
+      });
   };
 
   return (
@@ -18,7 +67,7 @@ const Modal = ({ isOpen, onClose, onSubmit, imageSrc }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
-        <h2>게시물 올리깅</h2>
+        <h2>게시물 올리기</h2>
         <form>
           <label htmlFor="title">제목:</label>
           <br />
@@ -26,14 +75,29 @@ const Modal = ({ isOpen, onClose, onSubmit, imageSrc }) => {
             type="text"
             id="title"
             name="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            value={picTitle}
+            onChange={(e) => setPicTitle(e.target.value)}
           />
           <br />
           <br />
           <label htmlFor="image">그림:</label>
           <br />
-          {imageSrc && <img id="drawing" src={imageSrc} alt="그림" />}
+          <input
+            type="file"
+            id="file"
+            name="file"
+            onChange={handleFileChange}
+            style={{ display: "none" }}
+          />
+          {selectedFile && (
+            <div>
+              <img
+                src={URL.createObjectURL(selectedFile)}
+                alt="그림"
+                style={{ maxWidth: "100%" }}
+              />
+            </div>
+          )}
           <br />
           <br />
           <label htmlFor="content">내용:</label>
@@ -41,8 +105,8 @@ const Modal = ({ isOpen, onClose, onSubmit, imageSrc }) => {
           <textarea
             id="content"
             name="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+            value={picContent}
+            onChange={(e) => setPicContent(e.target.value)}
           ></textarea>
           <br />
           <br />
