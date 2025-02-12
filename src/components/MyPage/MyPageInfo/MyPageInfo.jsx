@@ -26,8 +26,9 @@ const MyPageInfo = () => {
       })
       .then((response) => {
         console.log("데이터 받음", response);
+        const { member, point } = response.data;
+        setMember({ ...member, point: point.point });
 
-        setMember(response.data);
         setLoading(false);
       })
       .catch((error) => {
@@ -49,23 +50,23 @@ const MyPageInfo = () => {
         </InfoImgBox>
         <InfoTextBox>
           <InfoTextTitle>보유 잉크 : </InfoTextTitle>
-          <InfoText></InfoText>
+          <InfoText>{member?.point}</InfoText>
         </InfoTextBox>
         <InfoTextBox>
           <InfoTextTitle>아이디 : </InfoTextTitle>
-          <InfoText>{member.username}</InfoText>
+          <InfoText>{member?.userId}</InfoText>
         </InfoTextBox>
         <InfoTextBox>
           <InfoTextTitle>별명 : </InfoTextTitle>
-          <InfoText>{member.nickName}</InfoText>
+          <InfoText>{member?.userName}</InfoText>
         </InfoTextBox>
         <InfoTextBox>
           <InfoTextTitle>주소 : </InfoTextTitle>
-          <InfoText>{member.address}</InfoText>
+          <InfoText>{member?.userAddress}</InfoText>
         </InfoTextBox>
         <InfoTextBox>
           <InfoTextTitle>이메일 : </InfoTextTitle>
-          <InfoText>{member.email}</InfoText>
+          <InfoText>{member?.userEmail}</InfoText>
         </InfoTextBox>
         <InfoTextBox>
           <InfoTextTitle>그린 그림 수 :</InfoTextTitle>
