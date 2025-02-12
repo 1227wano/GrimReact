@@ -96,3 +96,10 @@ export const LoginSignup = styled.a`
   }
 `;
 export const Form = styled.form``;
+
+export const LoginError = styled.div`
+  margin: auto;
+  text-align: left;
+  width: 450px;
+  color: rgb(255, 63, 63, 1);
+`;
