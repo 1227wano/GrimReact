@@ -22,7 +22,7 @@ function App() {
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/paint" element={<Paint />} />
-            <Route path="/members" element={<Signup />} />
+            <Route path="/members/signup" element={<Signup />} />
             <Route path="/mypage/*" element={<MyPage />} />
             <Route path="/museum" element={<MuseumMain />} />
             <Route path="/apiMuseum" element={<MuseumForm />} />

@@ -1,14 +1,18 @@
 import { MyPageBox } from "../MyPage.stlyles";
 import {
   UpdateFrom,
-  UpdateFrom2,
-  UpdateFrom2_1,
-  UpdateFrom2_2,
-  UpdateFrom3,
   UpdateImg,
   UpdateImgBox,
   UpdateImgButton,
-  UpdateImgFrom,
+  UpdateInputBox,
+  UpdateInputButton,
+  UpdateInputTitle,
+  UpdateIntput,
+  UpdateIntPut,
+  UpdateText,
+  UpdateTextBox,
+  UpdateTextFrom,
+  UpdateTextTitle,
   UpdateTitle,
 } from "./MyPageUpdate.stlyles";
 
@@ -16,17 +20,32 @@ const MyPageUpdate = () => {
   return (
     <>
       <UpdateFrom>
-        <UpdateTitle>회원정보 수정</UpdateTitle>
-        <UpdateFrom2>
-          <UpdateFrom2_1>
-            <UpdateImgFrom>
-              <UpdateImg src="" />
-              <UpdateImgButton>이미지 수정</UpdateImgButton>
-            </UpdateImgFrom>
-          </UpdateFrom2_1>
-          <UpdateFrom2_2>나는 회원정보 넣을꺼야ㅐ</UpdateFrom2_2>
-        </UpdateFrom2>
-        <UpdateFrom3></UpdateFrom3>
+        <UpdateTextFrom>
+          <UpdateTitle>회원 정보 수정</UpdateTitle>
+          <UpdateImgBox>
+            <UpdateImg></UpdateImg>
+          </UpdateImgBox>
+          <UpdateImgButton>사진 업데이트</UpdateImgButton>
+          <UpdateTextBox>
+            <UpdateInputBox>
+              <UpdateInputTitle>아이디 :</UpdateInputTitle>
+              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+            </UpdateInputBox>
+            <UpdateInputBox>
+              <UpdateInputTitle>별명 :</UpdateInputTitle>
+              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+            </UpdateInputBox>
+            <UpdateInputBox>
+              <UpdateInputTitle>주소 :</UpdateInputTitle>
+              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+            </UpdateInputBox>
+            <UpdateInputBox>
+              <UpdateInputTitle>이메일 :</UpdateInputTitle>
+              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+            </UpdateInputBox>
+            <UpdateInputButton>수정 완료</UpdateInputButton>
+          </UpdateTextBox>
+        </UpdateTextFrom>
       </UpdateFrom>
     </>
   );

@@ -3,6 +3,7 @@ import {
   LoginBox,
   LoginButton,
   LoginContainer,
+  LoginError,
   LoginHr,
   LoginId,
   LoginNew,
@@ -17,11 +18,14 @@ import { AuthContext } from "../Context/AuthContext";
 const Login = () => {
   const [userId, setUserId] = useState("");
   const [userPwd, setUserPwd] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const { login } = useContext(AuthContext);
 
   const handleLogin = (e) => {
     e.preventDefault();
+
+    setErrorMessage("");
 
     axios
       .post("http://localhost/members/login", {
@@ -36,6 +40,15 @@ const Login = () => {
       })
       .catch((error) => {
         console.log(error);
+        if (
+          error.response &&
+          error.response.data &&
+          error.response.data.message
+        ) {
+          setErrorMessage(error.response.data.message);
+        } else {
+          setErrorMessage("알 수 없는 오류가 발생했습니다.");
+        }
       });
   };
 
@@ -56,6 +69,7 @@ const Login = () => {
             onChange={(e) => setUserPwd(e.target.value)}
             placeholder="비밀번호"
           ></LoginPwd>
+          {errorMessage && <LoginError>{errorMessage}</LoginError>}
           <LoginButton type="submit">로그인</LoginButton>
         </Form>
         <LoginHr />

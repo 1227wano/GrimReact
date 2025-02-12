@@ -27,6 +27,7 @@ const Signup = () => {
   const [nameError, setNameError] = useState("");
   const [addressError, setAddressError] = useState("");
   const [emailError, setEmailError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -46,11 +47,13 @@ const Signup = () => {
         setNameError("");
         setAddressError("");
         setEmailError("");
+
         setIdError(response.data.userId);
         setPwdError(response.data.userPwd);
         setNameError(response.data.userName);
         setAddressError(response.data.userAddress);
         setEmailError(response.data.userEmail);
+
         window.location = "/";
       })
       .catch((error) => {
@@ -60,6 +63,7 @@ const Signup = () => {
         setNameError(error.response.data.userName);
         setAddressError(error.response.data.userAddress);
         setEmailError(error.response.data.userEmail);
+        setErrorMessage(error.response.data.data);
       });
   };
 
@@ -150,7 +154,8 @@ const Signup = () => {
           </SignupTextBox>
           {addressError && <ErrorText>{addressError}</ErrorText>}
           {emailError && <ErrorText>{emailError}</ErrorText>}
-          <SignupButton type="submit">인증요청</SignupButton>
+          {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+          <SignupButton type="submit">가입요청</SignupButton>
         </Form>
       </SignupBox>
     </SignupContainer>
