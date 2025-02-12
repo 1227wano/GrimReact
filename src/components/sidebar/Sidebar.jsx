@@ -45,7 +45,7 @@ function Sidebar() {
           <div className="accordion-inner">
             <ul>
               <li onClick={handleLogout}>로그아웃</li>
-              <li onClick={() => goTo("/mypage")}>마이페이지</li>
+              <li onClick={() => goTo("/mypage/info")}>마이페이지</li>
               <li onClick={() => goTo("/settings")}>설정</li>
             </ul>
           </div>

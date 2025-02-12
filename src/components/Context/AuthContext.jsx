@@ -4,6 +4,7 @@ export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState({
+    userNo: null,
     username: null,
     accessToken: null,
     refreshToken: null,
@@ -14,8 +15,10 @@ export const AuthProvider = ({ children }) => {
     const accessToken = localStorage.getItem("accessToken");
     const refreshToken = localStorage.getItem("refreshToken");
     const username = localStorage.getItem("username");
-    if (accessToken && refreshToken && username) {
+    const userNo = localStorage.getItem("userNo");
+    if (accessToken && refreshToken && username && userNo) {
       setAuth({
+        userNo,
         username,
         accessToken,
         refreshToken,
@@ -24,13 +27,15 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (username, accessToken, refreshToken) => {
+  const login = (userNo, username, accessToken, refreshToken) => {
     setAuth({
+      userNo,
       username,
       accessToken,
       refreshToken,
       isAuthenticated: true,
     });
+    localStorage.setItem("userNo", userNo);
     localStorage.setItem("username", username);
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
@@ -43,6 +48,7 @@ export const AuthProvider = ({ children }) => {
       refreshToken: null,
       isAuthenticated: false,
     });
+    localStorage.removeItem("userNo");
     localStorage.removeItem("username");
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
