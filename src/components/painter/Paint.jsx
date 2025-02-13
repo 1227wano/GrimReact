@@ -4,7 +4,7 @@ import "./Paint.css";
 import Toolbar from "../toolbar/Toolbar";
 import Palette from "../palette/Palette";
 import Modal from "../paintModal/Modal";
-
+import axios from "axios";
 export default function Paint() {
   const canvasRef = useRef(null);
   const [getCtx, setGetCtx] = useState(null);
@@ -17,6 +17,7 @@ export default function Paint() {
   const [rainbowPen, setRainbowPen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [imageSrc, setImageSrc] = useState("");
+
   useEffect(() => {
     const canvas = canvasRef.current;
     canvas.width = 1150;
@@ -182,6 +183,27 @@ export default function Paint() {
     }
   };
 
+  const saveDrawingToServer = (dataURL) => {
+    const formData = new FormData();
+    formData.append("file", dataURL);
+    formData.append("picTitle", "your-title-here"); // 제목과 내용은 필요에 따라 적절히 수정해주세요.
+    formData.append("picContent", "your-content-here");
+
+    axios
+      .post("/paint", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log("파일 서버 전송 성공:", response.data);
+      })
+      .catch((error) => {
+        console.error("파일 서버 전송 실패:", error);
+      });
+  };
+
+  // saveDrawing 함수 수정
   const saveDrawing = () => {
     const canvas = canvasRef.current;
     const dataURL = canvas.toDataURL("image/png");
@@ -235,6 +257,24 @@ export default function Paint() {
   const handleModalSubmit = (data) => {
     console.log("제목:", data.title);
     console.log("내용:", data.content);
+
+    const formData = new FormData();
+    formData.append("title", data.title);
+    formData.append("content", data.content);
+    formData.append("file", imageSrc);
+
+    axios
+      .post("/paint", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      })
+      .then((response) => {
+        console.log("게시글 등록 성공:", response.data);
+      })
+      .catch((error) => {
+        console.error("게시글 등록 실패:", error);
+      });
   };
   const colors = [
     "#000000",

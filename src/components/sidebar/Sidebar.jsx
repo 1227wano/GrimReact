@@ -57,7 +57,7 @@ function Sidebar() {
         <li onClick={() => goTo("/paint")}>그림그리기</li>
         <li>상점</li>
         <li>경매</li>
-        <li>그림 게시판</li>
+        <li onClick={() => goTo("/board")}>그림 게시판</li>
         <li>소규모 게시판</li>
         <li onClick={() => goTo("/museum")}>미술관</li>
       </ul>
