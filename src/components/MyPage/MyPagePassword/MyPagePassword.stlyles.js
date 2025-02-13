@@ -13,11 +13,12 @@ export const PasswordTitle = styled.div`
 `;
 
 export const PasswordTextBox = styled.div`
+  padding: 5px;
   width: 100%;
   height: 35%;
-  border: 1px solid white;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
   border-radius: 15px;
-  margin: 50px 0;
+  margin: 20px 0;
 `;
 
 export const PasswordText = styled.div`
@@ -28,17 +29,46 @@ export const PasswordText = styled.div`
 `;
 
 export const PasswordInput = styled.input`
-  width: 400px;
+  width: 350px;
   height: 40px;
   font-size: 20px;
   display: inline-block;
 `;
 
+export const PasswordNotice = styled.div`
+  display: none;
+`;
+
+export const PasswordNoticeText = styled.div`
+  font-size: 18px;
+  color: white;
+`;
+
 export const PasswordButton = styled.button`
+  margin: 10px auto;
   width: 50px;
   height: 50px;
   border: 1px solid white;
-  display: inline-block;
+  font-size: 25px;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  padding: 0;
+  line-height: 2;
+  background-color: rgb(134, 80, 145);
+
+  &:hover + ${PasswordNotice} {
+    display: inline-block;
+
+    background-color: rgb(236, 178, 20);
+    border-radius: 5px;
+    width: 150px;
+    height: 30px;
+    color: white;
+    margin: 1px auto;
+    font-size: 20px;
+  }
 `;
 
 export const PasswordInputForm = styled.form``;
@@ -57,14 +87,18 @@ export const PasswordInputButton = styled.button`
 
 export const PasswordError = styled.div`
   color: rgb(255, 63, 63, 1);
-  margin: 10px 0;
+  margin: 5px 0;
   font-weight: 600;
 `;
 
-export const PasswordNotice = styled.div`
-  border: 1px solid white;
-  width: 120px;
-  height: 40px;
-  border-radius: 10px;
-  display: inline-block;
+export const InputBox = styled.div`
+  height: 50px;
+  margin: 5px 0;
+`;
+
+export const NoticeBox = styled.div`
+  width: 100%;
+  height: 35%;
+
+  margin: 10px 0;
 `;

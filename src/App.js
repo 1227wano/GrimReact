@@ -15,7 +15,6 @@ import MuseumForm from "./components/museum/MuseumForm";
 import MuseumMain from "./components/museum/MuseumMain";
 import MuseumReal from "./components/museum/MuseumReal";
 
-
 function App() {
   return (
     <div className="App">
@@ -33,7 +32,6 @@ function App() {
             <Route path="/museum" element={<MuseumMain />} />
             <Route path="/apiMuseum" element={<MuseumForm />} />
             <Route path="/realMuseum" element={<MuseumReal />} />
-
           </Routes>
         </div>
         <Footer />
