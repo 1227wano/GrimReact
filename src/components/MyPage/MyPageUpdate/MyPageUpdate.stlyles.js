@@ -27,36 +27,47 @@ export const UpdateImgBox = styled.div`
 
 export const UpdateTextBox = styled.div`
   width: 100%;
+  margin: 5px 0px;
 `;
 
 export const UpdateInputBox = styled.div`
-  width: 700px;
-  height: 40px;
-
-  margin: 15px 0;
+  margin: 10px 0px;
 `;
 
 export const UpdateInputTitle = styled.div`
-  width: 100px;
-  text-align: right;
+  width: 100%;
   font-size: 22px;
   color: rgb(236, 178, 20);
-  display: inline-block;
+
   font-weight: 600;
-  margin: 0px 10px;
 `;
 
 export const UpdateIntput = styled.input`
   width: 300px;
-  height: 30px;
-  margin: 0px 10px;
-  border-radius: 10px;
+  height: 40px;
+
+  border-radius: 15px;
+`;
+
+export const UpdateUserId = styled.input`
+  width: 300px;
+  height: 40px;
+
+  border-radius: 15px;
+
+  pointer-events: none;
+  background-color: rgb(150, 150, 150);
+  opacity: 0.6;
+
+  &::placeholder {
+    color: rgb(255, 255, 255);
+  }
 `;
 
 export const UpdateImgButton = styled.button`
-  margin: 10px 0;
+  margin: 2px 0;
   width: 150px;
-  height: 50px;
+  height: 45px;
   border-radius: 15px;
   border: 1px solid white;
   background-color: rgb(218, 163, 13);
@@ -75,8 +86,18 @@ export const UpdateInputButton = styled.button`
   border: 1px solid white;
   background-color: rgb(37, 187, 69);
   font-size: 18px;
+  margin: 25px 0px;
 
   &:hover {
     background-color: rgba(37, 187, 69, 0.5);
   }
+`;
+
+export const UpdateError = styled.div`
+  color: rgb(255, 63, 63, 1);
+  font-weight: 600;
+`;
+export const UpdateUserIdText = styled.div`
+  color: rgb(218, 218, 218);
+  font-weight: 600;
 `;

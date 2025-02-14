@@ -1,5 +1,6 @@
 import { MyPageBox } from "../MyPage.stlyles";
 import {
+  UpdateError,
   UpdateFrom,
   UpdateImg,
   UpdateImgBox,
@@ -8,12 +9,11 @@ import {
   UpdateInputButton,
   UpdateInputTitle,
   UpdateIntput,
-  UpdateIntPut,
-  UpdateText,
   UpdateTextBox,
   UpdateTextFrom,
-  UpdateTextTitle,
   UpdateTitle,
+  UpdateUserId,
+  UpdateUserIdText,
 } from "./MyPageUpdate.stlyles";
 
 const MyPageUpdate = () => {
@@ -28,20 +28,24 @@ const MyPageUpdate = () => {
           <UpdateImgButton>사진 업데이트</UpdateImgButton>
           <UpdateTextBox>
             <UpdateInputBox>
-              <UpdateInputTitle>아이디 :</UpdateInputTitle>
-              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+              <UpdateInputTitle>아이디</UpdateInputTitle>
+              <UpdateUserId placeholder="ㅎㅎ"></UpdateUserId>
+              <UpdateUserIdText>아이디는 수정이 불가능합니다.</UpdateUserIdText>
             </UpdateInputBox>
             <UpdateInputBox>
-              <UpdateInputTitle>별명 :</UpdateInputTitle>
-              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+              <UpdateInputTitle>별명</UpdateInputTitle>
+              <UpdateIntput placeholder="사이트에 보이는 닉네임"></UpdateIntput>
+              <UpdateError>잘못된 입력이야~</UpdateError>
             </UpdateInputBox>
             <UpdateInputBox>
-              <UpdateInputTitle>주소 :</UpdateInputTitle>
-              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+              <UpdateInputTitle>주소</UpdateInputTitle>
+              <UpdateIntput placeholder="주소"></UpdateIntput>
+              <UpdateError>잘못된 입력이야~</UpdateError>
             </UpdateInputBox>
             <UpdateInputBox>
-              <UpdateInputTitle>이메일 :</UpdateInputTitle>
-              <UpdateIntput placeholder="ㅎㅎ"></UpdateIntput>
+              <UpdateInputTitle>이메일</UpdateInputTitle>
+              <UpdateIntput placeholder="이메일을 입력해주세요."></UpdateIntput>
+              <UpdateError>잘못된 입력이야~</UpdateError>
             </UpdateInputBox>
             <UpdateInputButton>수정 완료</UpdateInputButton>
           </UpdateTextBox>

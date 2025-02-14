@@ -91,6 +91,12 @@ export const PasswordError = styled.div`
   font-weight: 600;
 `;
 
+export const PasswordCheck = styled.div`
+  margin: 5px 0;
+  font-weight: 600;
+  color: rgb(37, 187, 69);
+`;
+
 export const InputBox = styled.div`
   height: 50px;
   margin: 5px 0;

@@ -2,6 +2,7 @@ import {
   InputBox,
   NoticeBox,
   PasswordButton,
+  PasswordCheck,
   PasswordError,
   PasswordForm,
   PasswordInput,
@@ -14,7 +15,7 @@ import {
   PasswordTitle,
 } from "./MyPagePassword.stlyles";
 import { AuthContext } from "../../Context/AuthContext";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 const MyPagePassword = () => {
@@ -28,24 +29,27 @@ const MyPagePassword = () => {
   const [newError, setNewError] = useState("");
   const [CheckError, setCheckError] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorMsg, setErrorMsg] = useState("");
 
   const passwordView = (e) => {
     e.preventDefault();
     setShowPassword((prevState) => !prevState);
   };
 
-  const checkdPassword = (e) => {
-    console.log("e = ", e);
-    setNewPasswordCheck(e);
-    console.log(newPassword);
-    console.log("newPasswordCheck = ", newPasswordCheck);
-
-    if (e !== newPassword) {
-      setErrorMessage("비밀번호가 다름");
+  const checkdPassword = () => {
+    if (!newPasswordCheck && !newPassword) {
+      setErrorMsg("");
+    } else if (newPasswordCheck && newPasswordCheck !== newPassword) {
+      setErrorMsg("❌ 비밀번호가 일치하지 않습니다.");
+    } else if (newPasswordCheck && newPasswordCheck === newPassword) {
+      setErrorMsg("✅ 비밀번호 일치함");
     } else {
-      setErrorMessage("일치함");
+      setErrorMsg("");
     }
   };
+  useEffect(() => {
+    checkdPassword();
+  }, [newPassword, newPasswordCheck]);
 
   const handleChangePassword = (e) => {
     e.preventDefault();
@@ -78,6 +82,7 @@ const MyPagePassword = () => {
         setCurrentError(response.data.currentPassword);
         setNewError(response.data.newPassword);
         setCheckError(response.data.newPasswordCheck);
+        alert("비밀번호가 성공적으로 변경되었습니다!");
       })
       .catch((error) => {
         setCurrentError(error.response.data.currentPassword);
@@ -121,16 +126,26 @@ const MyPagePassword = () => {
             <InputBox>
               <PasswordInput
                 type={showPassword ? "text" : "password"}
-                onChange={(e) => checkdPassword(e.target.value)}
+                onChange={(e) => setNewPasswordCheck(e.target.value)}
                 value={newPasswordCheck}
                 placeholder="새 비밀번호 확인"
                 required
               ></PasswordInput>
             </InputBox>
 
-            {errorMessage && <PasswordError>{errorMessage}</PasswordError>}
             {newError && <PasswordError>{newError}</PasswordError>}
             {CheckError && <PasswordError>{CheckError}</PasswordError>}
+            {errorMsg && (
+              <PasswordError
+                style={{
+                  color: errorMsg.includes("✅ 비밀번호 일치함")
+                    ? "rgb(37, 187, 69)"
+                    : "rgb(255, 63, 63, 1)",
+                }}
+              >
+                {errorMsg}
+              </PasswordError>
+            )}
           </PasswordTextBox>
           <PasswordNoticeText>도움이 필요하신가요?</PasswordNoticeText>
           <NoticeBox>
