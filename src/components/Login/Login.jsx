@@ -34,8 +34,8 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response);
-        const { username, tokens } = response.data;
-        login(username, tokens.accessToken, tokens.refreshToken);
+        const { userNo, username, tokens } = response.data;
+        login(userNo, username, tokens.accessToken, tokens.refreshToken);
         window.location = "/";
       })
       .catch((error) => {

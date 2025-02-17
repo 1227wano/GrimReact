@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Thumbnail from "./Thumbnail";
 import BoardModal from "./BoardModal";
+import EditModal from "./EditModal";
+import { AuthContext } from "../Context/AuthContext";
 import "./PostItem.css";
 
-const PostItem = ({ post }) => {
+const PostItem = ({ post, no }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
 
   const handleItemClick = () => {
     setIsModalOpen(true);
@@ -12,6 +15,7 @@ const PostItem = ({ post }) => {
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+    setIsEditModalOpen(false);
   };
 
   return (
@@ -27,7 +31,18 @@ const PostItem = ({ post }) => {
           <p className="post-author">작성자: {post.userName}</p>
         </div>
       </div>
-      <BoardModal isOpen={isModalOpen} onClose={handleCloseModal} post={post} />
+      <BoardModal
+        isOpen={isModalOpen}
+        onClose={handleCloseModal}
+        post={post}
+        no={no}
+      />
+      <EditModal
+        isOpen={isEditModalOpen}
+        onClose={handleCloseModal}
+        post={post}
+        no={no}
+      />
     </div>
   );
 };
