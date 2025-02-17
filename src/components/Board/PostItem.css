@@ -32,3 +32,28 @@
   font-size: 0.9em;
   color: #999;
 }
+
+.post-info {
+  max-height: 150px; /* 필요한 높이로 조정하세요 */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: pre-wrap; /* 줄바꿈을 유지 */
+  word-wrap: break-word; /* 단어가 너무 길 때 줄바꿈 */
+}
+
+.post-info p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; /* 한 줄로 표시 */
+}
+
+.post-info h2 {
+  white-space: pre-wrap; /* 줄바꿈을 유지 */
+  word-wrap: break-word; /* 단어가 너무 길 때 줄바꿈 */
+  font-size: 1.2em; /* 제목 크기 조정, 필요시 변경 */
+  overflow: hidden; /* 내용이 넘칠 때 숨기기 */
+  text-overflow: ellipsis; /* 넘치는 텍스트가 있을 때 말줄임표 추가 */
+  display: -webkit-box; /* 웹킷 브라우저 호환성 */
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; /* 웹킷 브라우저 호환성 */
+}
