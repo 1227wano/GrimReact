@@ -47,26 +47,9 @@ const Login = () => {
         ) {
           setErrorMessage(error.response.data.message);
         } else {
-          setErrorMessage("❌ 아이디 혹은 비밀번호가 일치하지 않습니다.");
+          setErrorMessage("알 수 없는 오류가 발생했습니다.");
         }
       });
-
-    /*
-    axios
-      .post("http://localhost/members/login", {
-        userId: userId,
-        userPwd: userPwd,
-      })
-      .then((response) => {
-        console.log(response);
-        const { username, tokens } = response.data;
-        login(username, tokens.accessToken, tokens.refreshToken);
-        window.location = "/";
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-      */
   };
 
   return (
