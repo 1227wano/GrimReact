@@ -1,5 +1,7 @@
 import {
   Form,
+  KakaoImg,
+  KakaoLogin,
   LoginBox,
   LoginButton,
   LoginContainer,
@@ -14,6 +16,7 @@ import {
 import { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../Context/AuthContext";
+import KaKaoLogin from "./KakaoLogin";
 
 const Login = () => {
   const [userId, setUserId] = useState("");
@@ -34,8 +37,8 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response);
-        const { username, tokens } = response.data;
-        login(username, tokens.accessToken, tokens.refreshToken);
+        const { userNo, username, tokens } = response.data;
+        login(userNo, username, tokens.accessToken, tokens.refreshToken);
         window.location = "/";
       })
       .catch((error) => {
@@ -77,6 +80,9 @@ const Login = () => {
         <LoginSignup href="/members/signup">회원가입</LoginSignup>|
         <LoginSignup href="#">아이디 찾기</LoginSignup>|
         <LoginSignup href="#">비밀번호 찾기</LoginSignup>
+        <br />
+        <br />
+        <KaKaoLogin></KaKaoLogin>
       </LoginBox>
     </LoginContainer>
   );
