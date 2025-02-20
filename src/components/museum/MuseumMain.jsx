@@ -77,8 +77,6 @@ function MuseumMain() {
               // 정상적으로 검색이 완료됐으면
               if (status === kakao.maps.services.Status.OK) {
                 const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
-                console.log(result[0].y);
-                console.log(result[0].x);
 
                 //~이미지 마커 만들기~
                 const imageSrc = `${marker1}`,
@@ -96,6 +94,11 @@ function MuseumMain() {
                   position: coords,
                   image: markerImage,
                 });
+
+                kakao.maps.event.addListener(marker, "click", function () {
+                  navi(`/museum/${museum.userNo}`);
+                });
+
                 marker.setMap(map); // 마커가 지도 위에 표시되도록 설정합니다
 
                 // 인포윈도우로 장소에 대한 설명을 표시
@@ -132,8 +135,6 @@ function MuseumMain() {
                     result[0].y,
                     result[0].x
                   );
-                  console.log(result[0].y);
-                  console.log(result[0].x);
 
                   //~이미지 마커 만들기~
                   const imageSrc = `${marker2}`,
@@ -151,6 +152,7 @@ function MuseumMain() {
                     position: coords,
                     image: markerImage,
                   });
+                  marker.setMap(map); // 마커가 지도 위에 표시되도록 설정합니다
 
                   // 인포윈도우로 장소에 대한 설명을 표시
                   const infowindow = new kakao.maps.InfoWindow({

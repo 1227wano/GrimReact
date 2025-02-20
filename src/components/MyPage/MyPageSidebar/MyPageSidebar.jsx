@@ -29,7 +29,13 @@ const MyPageSidebar = () => {
           >
             <SidebarText>내 정보</SidebarText>
           </SidebarTextBox>
-          <SidebarTextBox>
+          <SidebarTextBox
+            onClick={() => goTo("museumDetail")}
+            style={{
+              backgroundColor:
+                activeMenu === "museumDetail" ? "rgb(59, 26, 82)" : "",
+            }}
+          >
             <SidebarText>내 미술관</SidebarText>
           </SidebarTextBox>
           <SidebarTextBox>
