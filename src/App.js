@@ -14,7 +14,6 @@ import Board from "./components/Board/Board";
 import MuseumForm from "./components/museum/MuseumForm";
 import MuseumMain from "./components/museum/MuseumMain";
 import MuseumReal from "./components/museum/MuseumReal";
-import LoginHandeler from "./components/Login/KakaoLogin";
 
 function App() {
   return (

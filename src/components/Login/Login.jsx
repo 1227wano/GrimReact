@@ -21,6 +21,7 @@ import KaKaoLogin from "./KakaoLogin";
 const Login = () => {
   const [userId, setUserId] = useState("");
   const [userPwd, setUserPwd] = useState("");
+
   const [errorMessage, setErrorMessage] = useState("");
 
   const { login } = useContext(AuthContext);
@@ -37,8 +38,14 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response);
-        const { userNo, username, tokens } = response.data;
-        login(userNo, username, tokens.accessToken, tokens.refreshToken);
+        const { userNo, username, userImg, tokens } = response.data;
+        login(
+          userNo,
+          username,
+          userImg,
+          tokens.accessToken,
+          tokens.refreshToken
+        );
         window.location = "/";
       })
       .catch((error) => {

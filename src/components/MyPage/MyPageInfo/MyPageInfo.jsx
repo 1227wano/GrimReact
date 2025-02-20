@@ -46,7 +46,7 @@ const MyPageInfo = () => {
       <InfoFrom>
         <InfoTitle>내 정보</InfoTitle>
         <InfoImgBox>
-          <InfoImg></InfoImg>
+          <InfoImg src={member?.userFileUrl}></InfoImg>
         </InfoImgBox>
         <InfoTextBox>
           <InfoTextTitle>보유 잉크 : </InfoTextTitle>
