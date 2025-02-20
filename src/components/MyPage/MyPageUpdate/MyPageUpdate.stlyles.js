@@ -60,7 +60,7 @@ export const UpdateUserId = styled.input`
   border-radius: 15px;
 
   pointer-events: none;
-  background-color: rgb(150, 150, 150);
+  background-color: rgba(255, 255, 255, 0);
   opacity: 0.6;
 
   &::placeholder {
@@ -69,7 +69,7 @@ export const UpdateUserId = styled.input`
 `;
 
 export const UpdateImgButton = styled.button`
-  margin: 2px 0;
+  margin: 2px 5px;
   width: 150px;
   height: 45px;
   border-radius: 15px;
@@ -79,6 +79,20 @@ export const UpdateImgButton = styled.button`
 
   &:hover {
     background-color: rgba(236, 178, 20, 0.5);
+  }
+`;
+
+export const DefaultButton = styled.button`
+  margin: 2px 5px;
+  width: 150px;
+  height: 45px;
+  border-radius: 15px;
+  border: 1px solid white;
+  background-color: rgb(158, 151, 133);
+  font-size: 18px;
+
+  &:hover {
+    background-color: rgba(170, 166, 154, 0.5);
   }
 `;
 export const UpdateTextForm = styled.form``;

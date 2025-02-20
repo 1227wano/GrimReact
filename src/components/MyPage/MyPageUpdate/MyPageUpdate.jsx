@@ -1,6 +1,7 @@
 import { AddressOption } from "../../Signup/Signup.stlyles";
 
 import {
+  DefaultButton,
   UpdateAddress,
   UpdateError,
   UpdateFrom,
@@ -18,20 +19,19 @@ import {
   UpdateUserId,
   UpdateUserIdText,
 } from "./MyPageUpdate.stlyles";
-import { useState, useEffect, useContext } from "react";
+import { useState, useContext } from "react";
 import { AuthContext } from "../../Context/AuthContext";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 
 const MyPageUpdate = () => {
-  const navigate = useNavigate();
-  const { auth } = useContext(AuthContext);
+  const { auth, updateProfileImage } = useContext(AuthContext);
 
   const [userName, setUserName] = useState("");
   const [userAddress, setUserAddress] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [file, setFile] = useState(null);
   const [exsitingFileUrl, setExsitingFileUrl] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleImageUpload = (e) => {
     const exsitingFileUrl = e.target.files[0];
@@ -51,30 +51,6 @@ const MyPageUpdate = () => {
     e.preventDefault();
     document.getElementById(`fileInput`).click();
   };
-
-  useEffect(() => {
-    if (!auth.isAuthenticated) {
-      navigate("/");
-    } else {
-      axios
-        .get("http://localhost/members/mypage/update", {
-          headers: {
-            Authorization: `Bearer ${auth.accessToken}`,
-          },
-        })
-        .then((response) => {
-          setUserName(response.data.userName);
-          setUserAddress(response.data.userAddress);
-          setUserEmail(response.data.userEmail);
-          setExsitingFileUrl(response.data.userFileUrl || "");
-
-          console.info(response);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
-  }, [auth, navigate]);
 
   const handleUpdate = (e) => {
     e.preventDefault();
@@ -98,8 +74,43 @@ const MyPageUpdate = () => {
         },
       })
       .then((response) => {
-        console.log(auth.userNo);
-        console.log(response.target);
+        console.log(response.data);
+        alert("회원 정보가 수정 되었습니다.");
+
+        if (exsitingFileUrl) {
+          updateProfileImage(exsitingFileUrl);
+        }
+      })
+      .catch((error) => {
+        console.log(error.response.data);
+        setErrorMessage(error.response.data.message);
+      });
+  };
+
+  const handleDefautlImg = (e) => {
+    e.preventDefault();
+
+    // eslint-disable-next-line no-restricted-globals
+    const isConfirmed = confirm("기본 이미지로 수정하시겠습니까?");
+    if (!isConfirmed) {
+      return;
+    }
+
+    const member = {
+      userNo: auth.userNo,
+      userFileUrl: "/main_img.PNG",
+    };
+
+    axios
+      .put("http://localhost/members/mypage/imgupdate", member, {
+        headers: {
+          Authorization: `Bearer ${auth.accessToken}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+
+        updateProfileImage("/main_img.PNG");
       })
       .catch((error) => {
         console.error(error);
@@ -112,15 +123,18 @@ const MyPageUpdate = () => {
         <UpdateTextForm onSubmit={handleUpdate}>
           <UpdateTitle>회원 정보 수정</UpdateTitle>
           <UpdateImgBox>
-            {exsitingFileUrl && (
+            {exsitingFileUrl ? (
               <>
                 <UpdateImg src={exsitingFileUrl} />
               </>
+            ) : (
+              <UpdateImg src={auth.userImg} />
             )}
           </UpdateImgBox>
           <UpdateImgButton onClick={handleButtonClick}>
             사진 업데이트
           </UpdateImgButton>
+          <DefaultButton onClick={handleDefautlImg}>기본 이미지</DefaultButton>
           <UpdateInputFile
             type="file"
             id="fileInput"
@@ -140,9 +154,7 @@ const MyPageUpdate = () => {
                 placeholder="사이트에 보이는 닉네임"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
-                required
               ></UpdateIntput>
-              <UpdateError>잘못된 입력이야~</UpdateError>
             </UpdateInputBox>
             <UpdateInputBox>
               <UpdateInputTitle>주소</UpdateInputTitle>
@@ -177,7 +189,6 @@ const MyPageUpdate = () => {
                   제주특별자치도
                 </AddressOption>
               </UpdateAddress>
-              <UpdateError>잘못된 입력이야~</UpdateError>
             </UpdateInputBox>
             <UpdateInputBox>
               <UpdateInputTitle>이메일</UpdateInputTitle>
@@ -185,9 +196,8 @@ const MyPageUpdate = () => {
                 placeholder="이메일을 입력해주세요."
                 value={userEmail}
                 onChange={(e) => setUserEmail(e.target.value)}
-                required
               ></UpdateIntput>
-              <UpdateError>잘못된 입력이야~</UpdateError>
+              {errorMessage && <UpdateError>{errorMessage}</UpdateError>}
             </UpdateInputBox>
             <UpdateInputButton type="submit">수정 완료</UpdateInputButton>
           </UpdateTextBox>
