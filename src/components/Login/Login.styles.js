@@ -103,3 +103,11 @@ export const LoginError = styled.div`
   width: 450px;
   color: rgb(255, 63, 63, 1);
 `;
+
+export const KakaoLogin = styled.a`
+  &:hover {
+    cursor: pointer;
+  }
+`;
+
+export const KakaoImg = styled.img``;

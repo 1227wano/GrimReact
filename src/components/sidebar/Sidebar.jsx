@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 import { AuthContext } from "../Context/AuthContext";
@@ -36,7 +36,11 @@ function Sidebar() {
 
       <div className="profile-picture" onClick={handleProfileClick}>
         <div className="start">
-          {auth.isAuthenticated ? "프로필사진들어갈곳" : "시작하기"}
+          {auth.isAuthenticated ? (
+            <img className="userImg" src={auth.userImg} />
+          ) : (
+            "시작하기"
+          )}
         </div>
       </div>
 

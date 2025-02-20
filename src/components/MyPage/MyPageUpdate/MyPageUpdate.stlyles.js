@@ -34,6 +34,10 @@ export const UpdateInputBox = styled.div`
   margin: 10px 0px;
 `;
 
+export const UpdateInputFile = styled.input`
+  display: none;
+`;
+
 export const UpdateInputTitle = styled.div`
   width: 100%;
   font-size: 22px;
@@ -77,7 +81,7 @@ export const UpdateImgButton = styled.button`
     background-color: rgba(236, 178, 20, 0.5);
   }
 `;
-export const UpdateTextFrom = styled.form``;
+export const UpdateTextForm = styled.form``;
 
 export const UpdateInputButton = styled.button`
   width: 150px;
@@ -100,4 +104,23 @@ export const UpdateError = styled.div`
 export const UpdateUserIdText = styled.div`
   color: rgb(218, 218, 218);
   font-weight: 600;
+`;
+
+export const UpdateAddress = styled.select`
+  width: 300px;
+  height: 40px;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  border-radius: 10px;
+
+  &:focus {
+    color: black;
+  }
+  &:active {
+    color: black;
+  }
+  &:hover {
+    cursor: pointer;
+  }
 `;
