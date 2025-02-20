@@ -98,13 +98,7 @@ const MuseumForm = () => {
         <form method="post" onSubmit={handlerSubmit}>
           <select onChange={handleSelected}>
             {museums.map((e, i) => (
-              <option
-                key={`${i}`}
-                id="museumSidoName"
-                // value={museumSidoName}
-                // onChange={abc}
-                required
-              >
+              <option key={`${i}`} id="museumSidoName" required>
                 {e.arnoAdr}
               </option>
             ))}

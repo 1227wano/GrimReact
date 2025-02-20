@@ -13,7 +13,8 @@ import Board from "./components/Board/Board";
 
 import MuseumForm from "./components/museum/MuseumForm";
 import MuseumMain from "./components/museum/MuseumMain";
-import MuseumReal from "./components/museum/MuseumReal";
+import MuseumDatail from "./components/museum/MuseumDetail";
+import MuseumUpdate from "./components/museum/MuseumUpdate";
 
 function App() {
   return (
@@ -32,7 +33,8 @@ function App() {
 
             <Route path="/museum" element={<MuseumMain />} />
             <Route path="/apiMuseum" element={<MuseumForm />} />
-            <Route path="/realMuseum" element={<MuseumReal />} />
+            <Route path="/museum/:id" element={<MuseumDatail />} />
+            <Route path="/museum/:id/edit" element={<MuseumUpdate />} />
           </Routes>
         </div>
         <Footer />
