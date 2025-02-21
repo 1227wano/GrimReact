@@ -84,3 +84,18 @@
 .edit-button-outside:hover {
   background-color: #45a049;
 }
+
+.delete-button-outside {
+  margin-top: 10px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.delete-button-outside:hover {
+  background-color: #d32f2f;
+}
