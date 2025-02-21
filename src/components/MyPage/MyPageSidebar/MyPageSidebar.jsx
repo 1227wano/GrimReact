@@ -30,7 +30,7 @@ const MyPageSidebar = () => {
             <SidebarText>내 정보</SidebarText>
           </SidebarTextBox>
           <SidebarTextBox
-            onClick={() => goTo("museumDetail")}
+            onClick={() => goTo("museumDetail")} // 본인이 만든 미술관 상세보기로
             style={{
               backgroundColor:
                 activeMenu === "museumDetail" ? "rgb(59, 26, 82)" : "",

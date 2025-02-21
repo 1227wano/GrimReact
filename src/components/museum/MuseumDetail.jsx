@@ -17,20 +17,23 @@ import { AuthContext } from "../Context/AuthContext";
 const MuseumDatail = () => {
   const { id } = useParams();
   const { auth } = useContext(AuthContext);
-  const [museumNo, setMuseumNo] = useState(null); // 여기부터 바꿔
+  const [museumNo, setMuseumNo] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [museum, setMuseum] = useState([]);
   const navi = useNavigate();
 
   useEffect(() => {
     axios
       .get(`http://localhost/museum/${id}`, {
+        // id=museum.userNo 여기부터 바꿔
         headers: {
           Authorization: `Bearer ${auth.accessToken}`,
         },
       })
       .then((response) => {
         console.log(response.data);
+        setMuseum(response.data);
         setMuseumNo(response.data.userNo);
         setLoading(false);
       })
@@ -79,9 +82,11 @@ const MuseumDatail = () => {
   };
   return (
     <div>
-      <h2>미술관명</h2>
-      <span>미술관장명</span>
-      <p>운영시간</p>
+      <h2>{/*미술관장명(user에서 조인 select)*/}님의 미술관</h2>
+      <span>{museum.museumName}</span>
+      <p>
+        운영시간 : {museum.museumOpen} ~ {museum.museumClose}
+      </p>
       {auth.userNo == museumNo && (
         <div>
           <button onClick={handleEdit}>수정하기</button>

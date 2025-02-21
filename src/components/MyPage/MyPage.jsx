@@ -7,6 +7,7 @@ import MyPagePoint from "./MyPagePoint/MyPagePoint";
 
 import MyPageLeave from "./MyPageLeave/MyPageLeave";
 import MyPagePassword from "./MyPagePassword/MyPagePassword";
+import MuseumDatail from "../museum/MuseumDetail";
 
 const MyPage = () => {
   return (
@@ -20,6 +21,7 @@ const MyPage = () => {
             <Route path="point" element={<MyPagePoint />} />
             <Route path="password" element={<MyPagePassword />} />
             <Route path="leave" element={<MyPageLeave />} />
+            <Route path="museumDetail" element={<MuseumDatail />} />
           </Routes>
           <Outlet />
         </MyPageBox>

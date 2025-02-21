@@ -96,7 +96,7 @@ function MuseumMain() {
                 });
 
                 kakao.maps.event.addListener(marker, "click", function () {
-                  navi(`/museum/${museum.userNo}`);
+                  navi(`/museum/${museum.userNo}`); // 각 마커 미술관에서 상세보기로
                 });
 
                 marker.setMap(map); // 마커가 지도 위에 표시되도록 설정합니다
