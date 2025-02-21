@@ -63,6 +63,44 @@
   background-position: center;
   position: relative;
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+  background-image: linear-gradient(rgb(59, 26, 82)),
+    linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet);
+  background-origin: border-box;
+  background-clip: content-box, border-box;
+  transition: border 1s;
+}
+.profile-picture::before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border-radius: 50%;
+  border: 5px solid transparent;
+  background-image: linear-gradient(
+    45deg,
+    red,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  background-origin: border-box;
+  background-clip: border-box;
+  z-index: -1;
+  animation: rainbow 2s linear infinite;
+}
+@keyframes rainbow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .profile-picture:hover {

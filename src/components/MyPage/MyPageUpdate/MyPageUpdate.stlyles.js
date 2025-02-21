@@ -23,6 +23,7 @@ export const UpdateImgBox = styled.div`
   background-color: rgb(59, 26, 82);
   border-radius: 50%;
   margin: 20px auto;
+  border: 5px solid rgb(236, 178, 20);
 `;
 
 export const UpdateTextBox = styled.div`
