@@ -1,5 +1,5 @@
 import {
-  InfoFrom,
+  InfoForm,
   InfoImg,
   InfoImgBox,
   InfoText,
@@ -28,7 +28,6 @@ const MyPageInfo = () => {
         console.log("데이터 받음", response);
         const { member, point } = response.data;
         setMember({ ...member, point: point.point });
-
         setLoading(false);
       })
       .catch((error) => {
@@ -43,7 +42,7 @@ const MyPageInfo = () => {
 
   return (
     <>
-      <InfoFrom>
+      <InfoForm>
         <InfoTitle>내 정보</InfoTitle>
         <InfoImgBox>
           <InfoImg src={member?.userFileUrl}></InfoImg>
@@ -84,7 +83,7 @@ const MyPageInfo = () => {
           <InfoTextTitle>??</InfoTextTitle>
           <InfoText>??</InfoText>
         </InfoTextBox>
-      </InfoFrom>
+      </InfoForm>
     </>
   );
 };
