@@ -19,7 +19,7 @@ const MyPagePoint = () => {
     <>
       <PointTitle>잉크 내역</PointTitle>
       <PointText>총 잉크 : </PointText>
-      <PointInt>5000</PointInt>
+      <PointInt>800</PointInt>
       <PointTable>
         <PointThead>
           <PointTr>
@@ -32,7 +32,7 @@ const MyPagePoint = () => {
           <PointTr>
             <PointTd>-200</PointTd>
             <PointTd>물감 구매</PointTd>
-            <PointTd>2024.02.02</PointTd>
+            <PointTd>2024.02.10</PointTd>
           </PointTr>
           <PointTr>
             <PointTd>1000</PointTd>
