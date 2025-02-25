@@ -38,15 +38,6 @@ function MuseumMain() {
       ]);
       REALmarker([...result.data.response.result.featureCollection.features]);
       return;
-      // .then((result) => {
-      //   const response =
-      //     result.data.response.result.featureCollection.features;
-      //   response.map((m, i) => {
-      //     const adr = m.properties.new_adr;
-      //     console.log(adr);
-      //     setAddress([...adr]);
-      //   });
-      // });
     };
     realMus(1); // API요청파라미터의 size에 최대값이 1000이어서 총 1500개를 조회하기 위해 page를 1,2..로 해서 요청하기
     realMus(2);
@@ -103,7 +94,7 @@ function MuseumMain() {
 
                 // 인포윈도우로 장소에 대한 설명을 표시
                 const infowindow = new kakao.maps.InfoWindow({
-                  content: `<div style="width:150px;text-align:center;padding:6px 0;">${museum.museumName}</div>`,
+                  content: `<div style="width:150px;text-align:center;padding:9px 0;">${museum.museumName}</div>`,
                 });
                 infowindow.open(map, marker);
               }

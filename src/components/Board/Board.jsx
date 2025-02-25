@@ -23,7 +23,7 @@ const Board = () => {
       <h1>그림 게시판</h1>
       <div className="post-list">
         {posts.map((post) => (
-          <PostItem key={post.picBoardNo} post={post} />
+          <PostItem key={post.picBoardNo} post={post} no={post.picBoardNo} />
         ))}
       </div>
     </div>

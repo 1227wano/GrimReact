@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const InfoForm = styled.div`
+  margin-top: 100px;
   width: 100%;
   height: 100%;
 `;
@@ -33,17 +34,18 @@ export const InfoTextBox = styled.div`
 
 export const InfoText = styled.div`
   width: 200px;
-  font-size: 25px;
+  font-size: 30px;
   color: white;
   display: inline-block;
-  margin: 0px 10px;
+  margin-top: 20px;
+  margin-left: 10px;
   text-align: left;
 `;
 
 export const InfoTextTitle = styled.div`
   width: 150px;
   text-align: right;
-  font-size: 20px;
+  font-size: 30px;
   color: rgb(236, 178, 20);
   display: inline-block;
 `;

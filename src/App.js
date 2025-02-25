@@ -34,7 +34,7 @@ function App() {
             <Route path="/museum" element={<MuseumMain />} />
             <Route path="/apiMuseum" element={<MuseumForm />} />
             <Route path="/museum/:id" element={<MuseumDatail />} />
-            <Route path="/museum/:id/edit" element={<MuseumUpdate />} />
+            <Route path="/museum/edit" element={<MuseumUpdate />} />
           </Routes>
         </div>
         <Footer />
