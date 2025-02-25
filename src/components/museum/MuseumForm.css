@@ -1,0 +1,60 @@
+.museum-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 760px;
+}
+
+.museum-form-title {
+  text-align: center;
+  color: #4b0082;
+  margin-bottom: 20px;
+}
+
+.museum-form-description {
+  text-align: center;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.museum-form-select,
+.museum-form-input {
+  width: calc(100% - 22px);
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.museum-form-select:focus,
+.museum-form-input:focus {
+  outline: none;
+  border-color: #4b0082;
+}
+
+.museum-form-button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #6a0dad;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.museum-form-button:hover {
+  background-color: #4b0082;
+}
+
+.museum-form-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(106, 13, 173, 0.8);
+}

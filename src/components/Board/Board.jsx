@@ -5,18 +5,37 @@ import "./Board.css";
 
 const Board = () => {
   const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
+    fetchPosts(page);
+  }, [page]);
+
+  const fetchPosts = (page) => {
     axios
-      .get("http://localhost/paint")
+      .get(`http://localhost/paint?page=${page}`)
       .then((response) => {
-        console.log("API 응답 데이터:", response);
-        setPosts(response.data);
+        console.log("API 응답 데이터:", response.data);
+        setPosts(response.data.list);
+        setTotalPages(response.data.totalPages);
       })
       .catch((error) => {
         console.error("Error fetching posts:", error);
       });
-  }, []);
+  };
+
+  const handlePreviousPage = () => {
+    if (page > 0) {
+      setPage(page - 1);
+    }
+  };
+
+  const handleNextPage = () => {
+    if (page < totalPages - 1) {
+      setPage(page + 1);
+    }
+  };
 
   return (
     <div className="board">
@@ -25,6 +44,14 @@ const Board = () => {
         {posts.map((post) => (
           <PostItem key={post.picBoardNo} post={post} no={post.picBoardNo} />
         ))}
+      </div>
+      <div className="pagination">
+        <button onClick={handlePreviousPage} disabled={page === 0}>
+          이전 페이지
+        </button>
+        <button onClick={handleNextPage} disabled={page === totalPages - 1}>
+          다음 페이지
+        </button>
       </div>
     </div>
   );
