@@ -39,7 +39,7 @@ const MyMuseum = () => {
   }, []);
 
   const handleEdit = () => {
-    navi(`/museum/edit`);
+    navi("/museum/edit");
   };
 
   const handleDelete = () => {

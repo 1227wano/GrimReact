@@ -1,8 +1,28 @@
 import React from "react";
 import "./BoardModal.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const BoardModal = ({ isOpen, onClose, post }) => {
+  const navi = useNavigate();
+
   if (!isOpen) return null;
+
+  const like = (post) => {
+    console.log(post);
+    axios
+      .post("http://localhost/paint/like", {
+        post,
+      })
+      .then((response) => {
+        if (response.status === 201) {
+          alert(".");
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
@@ -15,6 +35,9 @@ const BoardModal = ({ isOpen, onClose, post }) => {
         <p>{post.picContent}</p>
         <p>업로드 날짜: {new Date(post.writeDate).toLocaleDateString()}</p>
         <p>작성자: {post.userName}</p>
+        <button className="like-button" onClick={like(post)}>
+          좋아요
+        </button>
       </div>
     </div>
   );

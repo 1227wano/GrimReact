@@ -47,10 +47,6 @@ const MuseumForm = () => {
 
   // 얘는 form에서 입력한것을 보내는 것
   const handlerSubmit = (e) => {
-    // if (museumName.trim() === "" || museumSidoName.trim() === "") {
-    //   alert("필수 입력값이 누락되었니다.");
-    //   return;
-    // }
     e.preventDefault(); // 기본설정 지우기
 
     axios
