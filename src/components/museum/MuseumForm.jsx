@@ -84,15 +84,15 @@ const MuseumForm = () => {
 
   return (
     <>
-      <div>
+      <div className="museum-form-container">
         <br />
-        <h2>미술관 창설 신청 페이지</h2>
-        <p>
+        <h2 className="museum-form-title">미술관 창설 신청 페이지</h2>
+        <p className="museum-form-description">
           창설하실 미술관의 주소를 선택하여, 미술관명과 개장시간 / 폐장시간을
           선택해주세요.
         </p>
-        <form method="post" onSubmit={handlerSubmit}>
-          <select onChange={handleSelected}>
+        <form className="museum-form" method="post" onSubmit={handlerSubmit}>
+          <select className="museum-form-select" onChange={handleSelected}>
             {museums.map((e, i) => (
               <option key={`${i}`} id="museumSidoName" required>
                 {e.arnoAdr}
@@ -104,12 +104,14 @@ const MuseumForm = () => {
           <input
             type="text"
             placeholder="미술관명을 10자 이내로 입력하시오"
-            maxlength="10"
+            maxLength="10"
             id="museumName"
             value={museumName}
             onChange={(e) => setMuseumName(e.target.value)}
             required
+            className="museum-form-input"
           />
+          <br />
           미술관 개장시간을 입력하시오 :{" "}
           <input
             type="time"
@@ -117,7 +119,9 @@ const MuseumForm = () => {
             value={museumOpen}
             onChange={(e) => setMuseumOpen(e.target.value)}
             required
+            className="museum-form-input"
           />
+          <br />
           미술관 폐장시간을 입력하시오 :{" "}
           <input
             type="time"
@@ -125,8 +129,11 @@ const MuseumForm = () => {
             value={museumClose}
             onChange={(e) => setMuseumClose(e.target.value)}
             required
+            className="museum-form-input"
           />
-          <button type="submit">미술관 등록 신청~</button>
+          <button type="submit" className="museum-form-button">
+            미술관 등록 신청~
+          </button>
         </form>
         <br />
       </div>

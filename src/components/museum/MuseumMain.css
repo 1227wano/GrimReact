@@ -1,0 +1,40 @@
+/* MuseumMain.css */
+
+.museum-main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 760px;
+  background-color: #f2f2f2;
+}
+
+.museum-map {
+  width: 100%;
+  max-width: 1000px;
+  height: 600px;
+  border: 3px solid #eabc3e;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.museum-main-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #6a0dad;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.museum-main-button:hover {
+  background-color: #4b0082;
+}
+
+.museum-main-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(106, 13, 173, 0.8);
+}

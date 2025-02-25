@@ -7,7 +7,6 @@ import MuseumForm from "./MuseumForm";
 import marker1 from "../../img/marker1.gif";
 import marker2 from "../../img/marker2.gif";
 import marker3 from "../../img/marker3.gif";
-
 const { kakao } = window;
 
 function MuseumMain() {
@@ -180,16 +179,16 @@ function MuseumMain() {
 
   return (
     <>
-      <div
-        id="map"
-        style={{
-          width: "1000px",
-          height: "1000px",
-          border: "3px solid #eabc3e",
-        }}
-      ></div>
+      <div className="museum-main-container">
+        <div id="map" className="museum-map"></div>
 
-      <button onClick={() => navi("/apiMuseum")}>미술관 창설 신청</button>
+        <button
+          className="museum-main-button"
+          onClick={() => navi("/apiMuseum")}
+        >
+          미술관 창설 신청
+        </button>
+      </div>
     </>
   );
 }

@@ -82,5 +82,5 @@ export const PointListButton = styled.button`
   background-color: rgb(236, 178, 20);
   font-size: 25px;
   font-weight: 600;
-  color: rgb(98, 39, 138);
+  color: white;
 `;

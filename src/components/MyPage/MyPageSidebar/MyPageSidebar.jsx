@@ -67,7 +67,7 @@ const MyPageSidebar = () => {
                 activeMenu === "password" ? "rgb(59, 26, 82)" : "",
             }}
           >
-            <SidebarText>✅비밀번호 변경</SidebarText>
+            <SidebarText>비밀번호 변경</SidebarText>
           </SidebarTextBox>
           <SidebarTextBox
             onClick={() => goTo("leave")}
@@ -75,7 +75,7 @@ const MyPageSidebar = () => {
               backgroundColor: activeMenu === "leave" ? "rgb(59, 26, 82)" : "",
             }}
           >
-            <SidebarText>✅회원탈퇴</SidebarText>
+            <SidebarText>회원탈퇴</SidebarText>
           </SidebarTextBox>
         </Sidebar>
       </MyPageFrom>
