@@ -99,3 +99,27 @@
 .delete-button-outside:hover {
   background-color: #d32f2f;
 }
+
+.like-button {
+  margin-top: 20px;
+  padding: 3px 6px;
+  font-size: 15px;
+  height: 34px;
+  width: 80px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 5px rgba(217, 185, 236, 0.2);
+}
+
+.like-button {
+  background-color: #781b94;
+  color: rgb(223, 209, 223);
+}
+.like-button:hover {
+  background-color: #fafafa;
+  color: black;
+  border: solid 1px black;
+  transform: translateY(2px);
+}

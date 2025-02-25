@@ -90,13 +90,6 @@ const MuseumUpdate = () => {
             onChange={(e) => setMuseumName(e.target.value)}
             required
           />
-          <input
-            type="text"
-            id="museumSidoName"
-            placeholder="미술관 주소는 변경할 수 없습니다."
-            value={museum.museumSidoName}
-            required
-          />
           미술관 개장시간을 입력하시오 :{" "}
           <input
             type="time"
