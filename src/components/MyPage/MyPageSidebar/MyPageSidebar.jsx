@@ -29,7 +29,13 @@ const MyPageSidebar = () => {
           >
             <SidebarText>내 정보</SidebarText>
           </SidebarTextBox>
-          <SidebarTextBox>
+          <SidebarTextBox
+            onClick={() => goTo("museumDetail")} // 본인이 만든 미술관 상세보기로
+            style={{
+              backgroundColor:
+                activeMenu === "museumDetail" ? "rgb(59, 26, 82)" : "",
+            }}
+          >
             <SidebarText>내 미술관</SidebarText>
           </SidebarTextBox>
           <SidebarTextBox>
@@ -61,7 +67,7 @@ const MyPageSidebar = () => {
                 activeMenu === "password" ? "rgb(59, 26, 82)" : "",
             }}
           >
-            <SidebarText>비밀번호 변경</SidebarText>
+            <SidebarText>✅비밀번호 변경</SidebarText>
           </SidebarTextBox>
           <SidebarTextBox
             onClick={() => goTo("leave")}
@@ -69,7 +75,7 @@ const MyPageSidebar = () => {
               backgroundColor: activeMenu === "leave" ? "rgb(59, 26, 82)" : "",
             }}
           >
-            <SidebarText>회원탈퇴</SidebarText>
+            <SidebarText>✅회원탈퇴</SidebarText>
           </SidebarTextBox>
         </Sidebar>
       </MyPageFrom>

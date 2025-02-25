@@ -8,6 +8,7 @@
     "fabric": "^6.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-kakao-login": "^2.1.1",
     "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
     "redux-undo": "^1.1.0",
