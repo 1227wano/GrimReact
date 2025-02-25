@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (userNo, username, userImg, accessToken, refreshToken) => {
+  const login = (userNo, username, accessToken, refreshToken, userImg) => {
     setAuth({
       userNo,
       username,

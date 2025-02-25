@@ -38,8 +38,14 @@ const Login = () => {
       })
       .then((response) => {
         console.log(response);
-        const { userNo, username, tokens } = response.data;
-        login(userNo, username, tokens.accessToken, tokens.refreshToken);
+        const { userNo, username, tokens, userImg } = response.data;
+        login(
+          userNo,
+          username,
+          tokens.accessToken,
+          tokens.refreshToken,
+          userImg
+        );
         window.location = "/";
       })
       .catch((error) => {
