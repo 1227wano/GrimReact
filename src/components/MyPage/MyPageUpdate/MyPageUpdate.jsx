@@ -32,6 +32,7 @@ const MyPageUpdate = () => {
   const [file, setFile] = useState(null);
   const [exsitingFileUrl, setExsitingFileUrl] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [errorData, setErrorData] = useState("");
 
   const handleImageUpload = (e) => {
     const exsitingFileUrl = e.target.files[0];
@@ -76,7 +77,7 @@ const MyPageUpdate = () => {
       .then((response) => {
         console.log(response.data);
         alert("회원 정보가 수정 되었습니다.");
-
+        window.location = "/mypage/info";
         if (exsitingFileUrl) {
           updateProfileImage(exsitingFileUrl);
         }
@@ -84,6 +85,7 @@ const MyPageUpdate = () => {
       .catch((error) => {
         console.log(error.response.data);
         setErrorMessage(error.response.data.message);
+        setErrorData(error.response.data.data);
       });
   };
 
@@ -109,8 +111,8 @@ const MyPageUpdate = () => {
       })
       .then((response) => {
         console.log(response);
-
         updateProfileImage("/main_img.PNG");
+        window.location = "/mypage/info";
       })
       .catch((error) => {
         console.error(error);
@@ -198,6 +200,7 @@ const MyPageUpdate = () => {
                 onChange={(e) => setUserEmail(e.target.value)}
               ></UpdateIntput>
               {errorMessage && <UpdateError>{errorMessage}</UpdateError>}
+              {errorData && <UpdateError>{errorData}</UpdateError>}
             </UpdateInputBox>
             <UpdateInputButton type="submit">수정 완료</UpdateInputButton>
           </UpdateTextBox>
