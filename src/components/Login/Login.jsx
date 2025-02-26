@@ -49,16 +49,7 @@ const Login = () => {
         window.location = "/";
       })
       .catch((error) => {
-        console.log(error);
-        if (
-          error.response &&
-          error.response.data &&
-          error.response.data.message
-        ) {
-          setErrorMessage(error.response.data.message);
-        } else {
-          setErrorMessage("알 수 없는 오류가 발생했습니다.");
-        }
+        setErrorMessage(error.response.data.message);
       });
   };
 
