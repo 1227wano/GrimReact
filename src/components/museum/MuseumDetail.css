@@ -1,0 +1,64 @@
+.museum {
+  width: 1475px;
+  height: 800px;
+  margin: auto;
+}
+.museum-detail {
+  height: 20%;
+}
+
+.hof {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hof-title {
+  align-items: center;
+  text-align: center;
+  display: block;
+  font-weight: bold;
+}
+
+.hof-content {
+  background-color: #fefefe;
+  padding: 30px;
+  max-width: 700px;
+  width: 90%;
+  position: relative;
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 15px inset #8b4513;
+  outline: 10px outset #daa520;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  animation: slideUp 0.5s ease-out;
+}
+
+.hof-image {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+  border-radius: 8px;
+}
+
+.hof-content h2 {
+  margin-bottom: 20px;
+  color: #5a3a2e;
+}
+
+.hof-content p {
+  color: #4a4a4a;
+  line-height: 1.6;
+  max-width: 600px;
+  width: 100%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}

@@ -36,22 +36,6 @@ const BoardModal = ({ isOpen, onClose, post, no }) => {
 
   if (!isOpen) return null;
 
-  const like = (post) => {
-    console.log(post);
-    axios
-      .post("http://localhost/paint/like", {
-        post,
-      })
-      .then((response) => {
-        if (response.status === 201) {
-          alert(".");
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-
   console.log(auth);
   console.log(post);
 
@@ -80,7 +64,7 @@ const BoardModal = ({ isOpen, onClose, post, no }) => {
               삭제하기
             </button>
           )}
-          <button className="like-button" onClick={like(post)}>
+          <button className="like-button" /*onClick={like(post)}*/>
             좋아요
           </button>
         </div>

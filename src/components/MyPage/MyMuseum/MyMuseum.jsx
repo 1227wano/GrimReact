@@ -46,7 +46,6 @@ const MyMuseum = () => {
     if (window.confirm("정말 삭제하시겠습니까?")) {
       axios
         .delete("http://localhost/museum", {
-          // 여기부터
           headers: {
             Authorization: `Bearer ${auth.accessToken}`,
           },
@@ -77,8 +76,8 @@ const MyMuseum = () => {
   };
   return (
     <InfoForm>
-      <InfoTitle>{museum.museumUserName}님의 미술관</InfoTitle>
-      <InfoTitle>{museum.museumName}</InfoTitle>
+      <InfoTitle>{museum.museumUserName}님의 미술관 : </InfoTitle> <br />
+      <InfoTitle>"{museum.museumName}"</InfoTitle>
       <InfoTextBox>
         <InfoTextTitle>운영시간 : </InfoTextTitle>
         <InfoText>

@@ -76,13 +76,16 @@ const MuseumUpdate = () => {
 
   return (
     <>
-      <div>
+      <div className="museum-form-container">
         <br />
-        <h2>미술관 수정 페이지</h2>
-        <p>수정할 미술관명과 개장시간 / 폐장시간을 선택해주세요.</p>
-        <form method="post" onSubmit={handlerSubmit}>
+        <h2 className="museum-form-title">미술관 수정 페이지</h2>
+        <p className="museum-form-description">
+          수정할 미술관명과 개장시간 / 폐장시간을 선택해주세요.
+        </p>
+        <form method="post" onSubmit={handlerSubmit} className="museum-form">
           <input
             type="text"
+            className="museum-form-input"
             placeholder="미술관명을 10자 이내로 입력하시오"
             maxlength="10"
             id="museumName"
@@ -90,6 +93,7 @@ const MuseumUpdate = () => {
             onChange={(e) => setMuseumName(e.target.value)}
             required
           />
+          <br />
           미술관 개장시간을 입력하시오 :{" "}
           <input
             type="time"
@@ -106,7 +110,9 @@ const MuseumUpdate = () => {
             onChange={(e) => setMuseumClose(e.target.value)}
             required
           />
-          <button type="submit">미술관 정보 수정</button>
+          <button type="submit" className="museum-form-button">
+            미술관 정보 수정
+          </button>
         </form>
         <br />
       </div>

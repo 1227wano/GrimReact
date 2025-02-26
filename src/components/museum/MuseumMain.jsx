@@ -48,7 +48,7 @@ function MuseumMain() {
     const container = document.getElementById("map"); //지도를 담을 영역의 DOM 레퍼런스
     const options = {
       center: new kakao.maps.LatLng(36.3058564614158, 127.571572404035), //지도의 중심좌표.
-      level: 12, //지도의 레벨(확대, 축소 정도)
+      level: 13, //지도의 레벨(확대, 축소 정도)
     };
     const map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
     // 주소-좌표 변환 객체를 생성(위도 경도 받환받기)
@@ -181,12 +181,12 @@ function MuseumMain() {
     <>
       <div className="museum-main-container">
         <div id="map" className="museum-map"></div>
-
+        <br />
         <button
           className="museum-main-button"
           onClick={() => navi("/apiMuseum")}
         >
-          미술관 창설 신청
+          미술관 창설 신청👉
         </button>
       </div>
     </>

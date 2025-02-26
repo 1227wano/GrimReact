@@ -112,7 +112,7 @@ const MuseumForm = () => {
             className="museum-form-input"
           />
           <br />
-          미술관 개장시간을 입력하시오 :{" "}
+          미술관 개장시간을 입력해주세요 :{" "}
           <input
             type="time"
             id="museumOpen"
@@ -122,7 +122,7 @@ const MuseumForm = () => {
             className="museum-form-input"
           />
           <br />
-          미술관 폐장시간을 입력하시오 :{" "}
+          미술관 폐장시간을 입력해주세요 :{" "}
           <input
             type="time"
             id="museumClose"

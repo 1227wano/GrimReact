@@ -9,21 +9,34 @@ const MuseumDatail = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [museum, setMuseum] = useState([]);
-  const navi = useNavigate(); // 명예의전당으로 보내기용
+  const [hof, setHof] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`http://localhost/museum/${id}`)
-      .then((response) => {
-        console.log(response.data);
-        setMuseum(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-        setError(true);
-        setLoading(false);
-      });
+    // 미술관 상세정보 조회
+    const musDet = async () => {
+      await axios
+        .get(`http://localhost/museum/${id}`)
+        .then((response) => {
+          console.log(response.data);
+          setMuseum(response.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+          setError(true);
+          setLoading(false);
+        });
+    };
+    musDet();
+
+    // 미술관 내의 명예의 전당
+    const like = async () => {
+      const response = await axios.get("http://localhost/museum/like");
+      setHof(response.data);
+      console.log(response.data);
+      return;
+    };
+    like();
   }, []);
 
   if (loading) {
@@ -33,7 +46,6 @@ const MuseumDatail = () => {
       </div>
     );
   }
-
   if (error) {
     return (
       <div>
@@ -43,12 +55,37 @@ const MuseumDatail = () => {
   }
 
   return (
-    <div>
-      <h2>{museum.museumUserName}님의 미술관</h2>
-      <span>{museum.museumName}</span>
-      <p>
-        운영시간 : {museum.museumOpen} ~ {museum.museumClose}
-      </p>
+    <div className="museum">
+      <div className="museum-detail">
+        <br />
+        <h2>{museum.museumUserName}님의 미술관</h2>
+        <span>{museum.museumName}</span>
+        <p>
+          운영시간 : {museum.museumOpen} ~ {museum.museumClose}
+        </p>
+      </div>
+      <br />
+      <div>
+        <h1 className="hof-title">명예의 전당</h1>
+        <div className="hof">
+          {hof.map((fame) => {
+            return (
+              <>
+                <div className="hof-content">
+                  <img
+                    className="hof-image"
+                    src={fame.picName}
+                    alt={fame.picTitle}
+                  />
+                  <h2>작품명 : {fame.picTitle}</h2>
+                  <p>{fame.userName} 님의 미술관</p>
+                  <p>좋아요 수 : {fame.like}</p>
+                </div>
+              </>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };
