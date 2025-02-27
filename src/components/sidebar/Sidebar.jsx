@@ -57,7 +57,7 @@ function Sidebar() {
       )}
 
       <ul>
-        <li onClick={() => goTo("/")}>홈버튼</li>
+        <li onClick={() => goTo("/main")}>홈버튼</li>
         <li onClick={() => goTo("/paint")}>그림그리기</li>
         <li>상점</li>
         <li>경매</li>
