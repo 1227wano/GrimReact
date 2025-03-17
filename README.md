@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# 🦒 내가기린그린그림
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align='center'>
+    <img src="./NGGG_logo.jpg" alt="title" width='700px' />
+</div>
+<br/>
 
-## Available Scripts
+## ✅ 주제
 
-In the project directory, you can run:
+사용자가 직접 그린 그림을 기반으로 한 그림 공유 및 예술적 체험 사이트
 
-### `npm start`
+<br/>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 📅 기간
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+-   2025.02.05 - 2025.02.26.
 
-### `npm test`
+<br/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📜 프로젝트 컨셉 및 주요 기능
 
-### `npm run build`
+### 1️⃣ 기획 배경 및 목적
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 아무도 안 해 볼 법한 기능, 사이트에서 흔히 볼 수 없는 기능을 만들어보자는 의도로 그림판에 그림그리기 프로젝트를 기획
+- 그림을 통해 다양한 사람들과 소통하고 유사적이나 화가, 미술관 관장과 같은 체험을 할 수 있도록 구현
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<br/>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2️⃣ 담당 기능
 
-### `npm run eject`
+**미술관**
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- 사용자가 직접 그림판에 열심히 그린 그림을 어떤 방식으로 더 향유할 수 있을까 라는 생각으로 회원제 미술관 창설 기능 고안하였다.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- 등록된 전체 그림 중 조회수 순으로 등재되는 ‘명예의 전당’을 관람하기 위한 미술관을 회원제로 창설한다.
+- 보다 현실적인 체험을 위하여, 공공데이터 API와 지도 API를 활용하여 회원은 실제로 ‘매각준비’ 중인 공매 대상 건물의 주소로 미술관을 창설하면 지도에 마커로 표시된다.
+- 또한, 실제 국립 미술관도 API를 통해 지도에 마커로 표시하여 두 종류의 미술관을 구분함으로써 회원이 창설한 미술관은 사이트 상의 가상건물이지만 유사 미술관 관장 경험이 가능
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<br/>
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 💻 개발 환경
 
-## Learn More
+### 1️⃣ 활용 기술
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+<div align='center'>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Back-End
 
-### Code Splitting
+![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
+![SpringBoot](https://img.shields.io/badge/SpringBoot-%236DB33F.svg?style=for-the-badge&logo=SpringBoot&logoColor=white)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Front-End
 
-### Analyzing the Bundle Size
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=black)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Tools
 
-### Making a Progressive Web App
+![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitLab](https://img.shields.io/badge/gitlab-%23181717.svg?style=for-the-badge&logo=gitlab&logoColor=white)
+[![Notion](https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=notion&logoColor=white)](https://imminent-hamburger-1d8.notion.site/8-0-4-0fbd317ef9d840bc9d31ea8adfa50ceb)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+[![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)](https://www.figma.com/design/7WUqXjKvUcDPLKYMUa9P4Y/%EC%98%B7%EC%A7%B1?node-id=0-1&t=K68NqokoRcvm5jnd-0)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-0078d7.svg?style=for-the-badge&logo=visual-studio-code&logoColor=white)
 
-### Advanced Configuration
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+<br/>
 
-### Deployment
+### 2️⃣ ERD
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<div align='center'>
+  <img src='./GRIM_ERD.png' width='600px'>
+</div>
